@@ -1,0 +1,47 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Chronicle</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">{{ page.title }}</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-9" ng-switch on="editable">
+      <div ng-switch-when="true" class="page">
+        <input type="text" ng-model="page.title"/>
+        <textarea ng-model="page.content"></textarea>
+        <button class="btn btn-primary" ng-click="savePage()">Save page</button>
+        <button class="btn btn-danger">Remove page</button>
+      </div>
+      <div ng-switch-default>
+        <h1>{{ page.title }}</h1>
+        <div>
+          <p>{{ page.content }}</p>
+        </div>
+        <button class="btn btn-default" ng-click="editPage()">Edit page</button>
+      </div>
+    </div>
+
+    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+      <div class="well sidebar-nav">
+        <ul>
+          <li ng-repeat="page in pages"><a href="#/{{ page.uri }}">{{ page.title ? page.title : page.uri }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<footer>
+  <p>&copy; <a href="http://jpoint.nl">JPoint</a> 2013</p>
+</footer>

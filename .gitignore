@@ -4,3 +4,10 @@
 *.jar
 *.war
 *.ear
+.project-files
+
+chronicle-app/node_modules
+chronicle-app/dist
+chronicle-app/.tmp
+chronicle-app/.sass-cache
+chronicle-app/app/bower_components

@@ -1,4 +1,4 @@
-chronicle
+Chronicle
 =========
 
-Chronicle wiki
+The Chronicle wiki

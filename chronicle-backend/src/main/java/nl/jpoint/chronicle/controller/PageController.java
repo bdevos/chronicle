@@ -33,12 +33,13 @@ public class PageController {
     @Path("/{pageName}")
     @Produces(MediaType.APPLICATION_JSON)
     public String getPage(@PathParam("pageName") String pageName) throws IOException {
+
         String uri = parsePageUri(pageName);
         Page page = pageDAO.findByUri(uri);
 
         if (page == null) {
             page = new Page();
-            page.setUri(uri);
+            page.setUri(pageName);
             page.setParent(parseParentUri(pageName));
             page.getMeta().setCreated((new Date().getTime()));
 
@@ -75,28 +76,17 @@ public class PageController {
     }
 
     public static String parsePageUri(String target) {
-        String[] uriParts = target.split("/");
-
-        StringBuilder uri = new StringBuilder();
-        String validPieceOfUri = null;
-
-        for (int i = 0; i < uriParts.length; i++) {
-            if (i > 1 && uriParts[i].length() > 0) {
-                validPieceOfUri = uriParts[i];
-            }
-            if (validPieceOfUri != null) {
-                if (uri.length() > 0) {
-                    uri.append("/");
-                }
-                uri.append(validPieceOfUri);
-                validPieceOfUri = null;
-            }
+        while (target.contains("//")) {
+            target = target.replaceAll("//", "/");
         }
-        return uri.toString();
-    }
+        if (target.startsWith("/")) {
+            target = target.substring(1, target.length());
+        }
+        if (target.endsWith("/")) {
+            target = target.substring(0, target.length() - 1);
+        }
 
-    public static boolean isPageRequest(String target) {
-        return target.startsWith("/page");
+        return target;
     }
 
     public static String parseParentUri(String target) {

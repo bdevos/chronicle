@@ -4,7 +4,14 @@
 *.jar
 *.war
 *.ear
+target/
+
+# IDE Files #
+.classpath
 .project-files
+.idea
+*.iml
+
 
 chronicle-app/node_modules
 chronicle-app/dist

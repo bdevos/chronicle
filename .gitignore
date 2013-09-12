@@ -14,12 +14,14 @@ target/
 .settings
 .project
 .buildpath
+.externalToolBuilders
 
 #bower stuff
 chronicle-app/common/lib
 
 #npm stuff
 chronicle-app/node_modules
+chronicle-app/app/bower_components
 
 #generated
 chronicle-app/dist

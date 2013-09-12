@@ -2,7 +2,14 @@
 
 /* global chronicleApp */
 chronicleApp.controller('pageCtrl', function ($scope, $routeParams, pageService, $location, $q) {
-        $scope.page = pageService.get({uri: ($routeParams.pageUri === undefined) ? 'main' : $routeParams.pageUri});
+
+        page().then(function(page) {
+            if(page.meta.updated === 0) {
+                $scope.editable = true;
+            }
+            $scope.page = page;
+        })
+
         $scope.pages = pageService.query();
 
 		$scope.cancelEditing = function() {
@@ -30,6 +37,18 @@ chronicleApp.controller('pageCtrl', function ($scope, $routeParams, pageService,
                 $location.path($scope.page.uri);
             });
         };
+
+        function page() {
+            var deferred = $q.defer();
+
+            pageService.get({uri: ($routeParams.pageUri === undefined) ? 'main' : $routeParams.pageUri}, function (page) {
+                deferred.resolve(page)
+            }, function (response) {
+                deferred.reject();
+            });
+
+            return deferred.promise;
+        }
     }
 );
 

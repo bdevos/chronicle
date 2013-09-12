@@ -17,6 +17,7 @@
     "angular-mocks": "~1.2.0-rc.2",
     "angular-scenario": "~1.2.0-rc.2",
     "font-awesome": "~3.2.1",
-    "markdown": "~0.5.0"
+    "markdown": "~0.5.0",
+    "angular-ui": "~0.4.0"
   }
 }

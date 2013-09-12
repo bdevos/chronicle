@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('chronicleApp', ['ngRoute', 'ngResource', 'PageService'])
+angular.module('chronicleApp', ['ngRoute', 'ngResource', 'PageService', 'MarkdownFilter'])
   .config(function ($routeProvider) {
     // One comment
 

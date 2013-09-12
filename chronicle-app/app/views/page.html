@@ -23,7 +23,7 @@
       <div ng-switch-default>
         <h1 ng-dblclick="editPage()">{{ page.title }}</h1>
         <div>
-          <p ng-dblclick="editPage()">{{ page.content }}</p>
+          <p ng-dblclick="editPage()" ng-bind-html="page.content | toMarkdown"></p>
         </div>
       </div>
     </div>

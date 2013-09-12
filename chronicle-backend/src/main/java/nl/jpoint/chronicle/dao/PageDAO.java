@@ -7,6 +7,7 @@ import com.mongodb.Mongo;
 import nl.jpoint.chronicle.domain.Page;
 import org.apache.commons.configuration.Configuration;
 
+import java.util.Date;
 import java.util.List;
 
 public class PageDAO {
@@ -29,6 +30,7 @@ public class PageDAO {
     }
 
     public void save(Page page) {
+        page.getMeta().setUpdated((new Date()).getTime());
         dao.save(page);
     }
 

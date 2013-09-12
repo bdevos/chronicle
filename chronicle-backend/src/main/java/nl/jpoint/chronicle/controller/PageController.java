@@ -17,16 +17,17 @@ public class PageController {
 
     @Inject
     private ObjectMapper mapper;
-
     @Inject
     private PageDAO pageDAO;
 
     @POST
-    public String postPage(Page page) throws IOException {
+    @Path("/{uri}")
+    public String postPage(@PathParam("uri") String uri, String body) throws IOException {
+        Page page = mapper.readValue(body, Page.class);
+        page.setUri(uri);
         pageDAO.save(page);
         return formatPage(page);
     }
-
 
     @GET
     @Path("/{pageName}")
@@ -42,7 +43,7 @@ public class PageController {
             page.getMeta().setCreated((new Date().getTime()));
 
             if ("main".equals(uri)) {
-                //createContentForDefaultPage(page);
+                createContentForDefaultPage(page);
             } else {
                 page.setTitle("New page: " + uri);
             }
@@ -52,8 +53,25 @@ public class PageController {
 
     }
 
+    private void createContentForDefaultPage(Page page) {
+        page.setTitle("Welcome to Chronicle");
+        page.setContent("Here should be more explanation about this project, maybe just load the README.md once the project has Markdown parsing!");
+    }
+
     private String formatPage(Page page) throws IOException {
         return mapper.writeValueAsString(page);
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllPages() throws IOException {
+        return mapper.writeValueAsString(pageDAO.query());
+
+    }
+
+    @DELETE
+    public void deletePage(Page page) {
+        pageDAO.delete(page);
     }
 
     public static String parsePageUri(String target) {
@@ -77,22 +95,9 @@ public class PageController {
         return uri.toString();
     }
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getAllPages() throws IOException {
-        return mapper.writeValueAsString(pageDAO.query());
-
-    }
-
-    @DELETE
-    public void deletePage(Page page) {
-        pageDAO.delete(page);
-    }
-
     public static boolean isPageRequest(String target) {
         return target.startsWith("/page");
     }
-
 
     public static String parseParentUri(String target) {
         String uri = parsePageUri(target);
@@ -102,4 +107,5 @@ public class PageController {
         }
         return uri.substring(0, uri.lastIndexOf('/'));
     }
+
 }

@@ -9,7 +9,7 @@ chronicleApp.directive('markdown', function ($sce) {
         template: '<p>{{model}}</p>',
         link: function (scope, element, attrs, ngModel) {
             ngModel.$render = function() {
-                if(ngModel.$viewValue !== undefined) {
+                if(ngModel.$viewValue !== undefined && ngModel.$viewValue !== null) {
                     element.html($sce.trustAsHtml(markdown.toHTML(ngModel.$viewValue)));
                 }
             };

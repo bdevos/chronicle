@@ -71,8 +71,9 @@ public class PageController {
     }
 
     @DELETE
-    public void deletePage(Page page) {
-        pageDAO.delete(page);
+    @Path("/{uri}")
+    public void deletePage(@PathParam("uri") String uri) {
+        pageDAO.delete(pageDAO.findByUri(uri));
     }
 
     public static String parsePageUri(String target) {

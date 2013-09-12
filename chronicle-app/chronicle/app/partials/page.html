@@ -6,6 +6,7 @@
                 <textarea ng-model="page.content"></textarea>
                 <button class="btn btn-primary" ng-click="savePage()">Save page</button>
                 <button class="btn btn-danger" ng-click="removePage()">Remove page</button>
+                <button class="btn btn-default" ng-click="cancelEditing()">Cancel</button>
             </div>
             <div ng-switch-default>
                 <h1 ng-dblclick="editPage()">{{ page.title }}</h1>

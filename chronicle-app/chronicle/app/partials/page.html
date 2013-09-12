@@ -1,0 +1,29 @@
+<div class="container" data-ng-controller="pageCtrl">
+    <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9" ng-switch on="editable">
+            <div ng-switch-when="true" class="page">
+                <input type="text" ng-model="page.title"/>
+                <textarea ng-model="page.content"></textarea>
+                <button class="btn btn-primary" ng-click="savePage()">Save page</button>
+                <button class="btn btn-danger" ng-click="removePage()">Remove page</button>
+            </div>
+            <div ng-switch-default>
+                <h1 ng-dblclick="editPage()">{{ page.title }}</h1>
+
+                <div>
+                    <p ng-dblclick="editPage()" ng-bind-html="page.content | toMarkdown"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <div class="well sidebar-nav">
+                <ul>
+                    <li ng-repeat="page in pages"><a href="#/{{ page.uri }}">{{ page.title ? page.title : page.uri
+                        }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>

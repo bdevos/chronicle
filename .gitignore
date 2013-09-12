@@ -11,7 +11,9 @@ target/
 .project-files
 .idea
 *.iml
-
+.settings
+.project
+.buildpath
 
 chronicle-app/node_modules
 chronicle-app/dist

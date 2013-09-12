@@ -58,7 +58,7 @@ module.exports = function (grunt) {
       proxies: [
         {
           context: '/page',
-          host: '0.0.0.0',
+          host: 'localhost',
           port: 8080,
           https: false,
           changeOrigin: true

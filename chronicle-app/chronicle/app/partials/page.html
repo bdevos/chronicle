@@ -2,8 +2,8 @@
     <div class="row row-offcanvas row-offcanvas-right">
         <div class="col-xs-12 col-sm-9" ng-switch on="editable">
             <div ng-switch-when="true" class="page">
-                <input type="text" ng-model="page.title"/>
-                <textarea ng-model="page.content"></textarea>
+                <input ui-keydown="{27: 'cancelEditing()'}" type="text" ng-model="page.title"/>
+                <textarea ui-keydown="{27: 'cancelEditing()'}" ng-model="page.content"></textarea>
                 <button class="btn btn-primary" ng-click="savePage()">Save page</button>
                 <button class="btn btn-danger" ng-click="removePage()">Remove page</button>
                 <button class="btn btn-default" ng-click="cancelEditing()">Cancel</button>

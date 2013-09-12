@@ -1,6 +1,6 @@
 'use strict';
 
-var chronicleApp = angular.module('chronicleApp', ['ngRoute', 'ngResource', 'ngSanitize']);
+var chronicleApp = angular.module('chronicleApp', ['ui', 'ngRoute', 'ngResource', 'ngSanitize']);
 
 chronicleApp.config(function ($routeProvider) {
     $routeProvider

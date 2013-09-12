@@ -162,6 +162,7 @@ module.exports = function (grunt) {
             plugins: {
                 files: {
                     'dist/scripts/plugins.js': [
+                        '<%=yeoman.libs %>/angular-ui/build/angular-ui.js',
                         '<%=yeoman.libs %>/jquery/jquery.js',
                         '<%=yeoman.libs %>/bootstrap-sass/js/affix.js',
                         '<%=yeoman.libs %>/bootstrap-sass/js/alert.js',

@@ -4,7 +4,7 @@ import com.google.code.morphia.annotations.Embedded;
 import com.google.code.morphia.annotations.Entity;
 import com.google.code.morphia.annotations.Id;
 
-@Entity(value="pages", noClassnameStored=true)
+@Entity(value = "pages", noClassnameStored = true)
 public class Page {
 
     private String parent;

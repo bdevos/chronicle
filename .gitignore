@@ -11,6 +11,8 @@ target/
 .project-files
 .idea
 *.iml
+.settings
+.project
 
 
 chronicle-app/node_modules

@@ -7,4 +7,8 @@ angular.module('chronicleApp', ['ngRoute', 'ngResource', 'PageService'])
         templateUrl: 'views/page.html',
         controller: 'PageCtrl'
       })
+      .when('/', {
+        templateUrl: 'views/page.html',
+        controller: 'PageCtrl'
+      })
   });

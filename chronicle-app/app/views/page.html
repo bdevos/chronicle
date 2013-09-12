@@ -18,14 +18,13 @@
         <input type="text" ng-model="page.title"/>
         <textarea ng-model="page.content"></textarea>
         <button class="btn btn-primary" ng-click="savePage()">Save page</button>
-        <button class="btn btn-danger">Remove page</button>
+        <button class="btn btn-danger" ng-click="removePage()">Remove page</button>
       </div>
       <div ng-switch-default>
-        <h1>{{ page.title }}</h1>
+        <h1 ng-dblclick="editPage()">{{ page.title }}</h1>
         <div>
-          <p>{{ page.content }}</p>
+          <p ng-dblclick="editPage()">{{ page.content }}</p>
         </div>
-        <button class="btn btn-default" ng-click="editPage()">Edit page</button>
       </div>
     </div>
 

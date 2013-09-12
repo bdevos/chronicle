@@ -26,6 +26,10 @@ public class PageDAO {
         dao.save(page);
     }
 
+    public void delete(Page page) {
+        dao.delete(page);
+    }
+
     public List<Page> query() {
         return dao.find().asList();
     }

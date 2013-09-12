@@ -37,7 +37,7 @@ public class Startup extends AbstractHandler {
                        HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
-        if (pageHandler.isPageQuery(target) || pageHandler.parsePageUri(target) != null) {
+        if (PageHandler.isPageRequest(target)) {
             pageHandler.handle(target, baseRequest, request, response);
 
         } else {

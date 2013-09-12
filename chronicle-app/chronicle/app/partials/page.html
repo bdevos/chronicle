@@ -1,6 +1,6 @@
 <div class="container" data-ng-controller="pageCtrl">
     <div class="row row-offcanvas row-offcanvas-right">
-        <div class="col-xs-12 col-sm-9" ng-switch on="editable">
+        <div class="col-xs-12 col-sm-8" ng-switch on="editable">
             <div ng-switch-when="true" class="page">
                 <input ui-keydown="{27: 'cancelEditing()'}" type="text" ng-model="page.title"/>
                 <textarea ui-keydown="{27: 'cancelEditing()'}" ng-model="page.content"></textarea>
@@ -17,12 +17,46 @@
             </div>
         </div>
 
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+        <div class="col-xs-6 col-sm-4 sidebar-offcanvas" id="sidebar" role="navigation">
             <div class="well sidebar-nav">
                 <ul>
-                    <li ng-repeat="page in pages"><a href="#/{{ page.uri }}">{{ page.title ? page.title : page.uri
-                        }}</a></li>
+                    <li ng-repeat="page in pages"><a href="#/{{ page.uri }}">{{ page.title ? page.title : page.uri }}</a></li>
                 </ul>
+            </div>
+            <div class="collapsable well sidebar-nav" ng-show="editable">
+            	<p>Markdown examples:</p>
+
+<pre>*italic*   **bold**
+_italic_   __bold__
+
+A [link](http://url.com/ "Title")
+![alt text](/path/img.jpg "Title")
+
+Header 1
+========
+
+Header 2
+--------
+
+# Header 1 #
+## Header 2 ##
+###### Header 6
+
+1.  Foo
+2.  Bar
+3.  Bar
+
+* Item 1
+  * Item 1A
+  * Item 1B
+
+&gt; Email-style angle brackets
+&gt; are used for blockquotes.
+
+    This is formatted code
+    Starting with 4 spaces or 1 tab
+
+`&lt;code span&gt;`</pre>    		
             </div>
         </div>
     </div>
